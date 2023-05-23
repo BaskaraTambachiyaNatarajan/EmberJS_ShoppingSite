@@ -1,0 +1,27 @@
+{{page-title "Item"}}
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <LinkTo @route="index"> Home </LinkTo>
+        </li>
+        <li class="breadcrumb-item">
+             {{this.model.name}}
+        </li>
+    </ol>
+<GeneralContainer>
+    <div class="product item-details-page {{if this.isZoomed 'is-zoomed'}}">
+        <Product::Image @src={{this.ProductImage}} @toggleZoom={{this.toggleZoom}}/>
+        <Product::Details 
+        @isDetails = {{true}}
+        @name={{this.model.name}}
+        @price={{this.model.price}}
+        @colors={{this.model.colors}} @color={{this.color}} @onChangeColor = {{this.onChangeColor}}/>
+    </div>
+    <h5 class="mt-5">Features</h5>
+    <ul>
+        {{#each this.model.features as |feature|}}
+        <li>{{feature}}</li>
+        {{/each}}
+    </ul>
+</GeneralContainer>
+{{outlet}}
